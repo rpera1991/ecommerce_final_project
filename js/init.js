@@ -40,21 +40,10 @@ var getJSONData = function(url) {
         });
 }
 
-function verifyIfUserHasLoggedIn() {
-    return localStorage.getItem('email') !== null && localStorage.getItem('email') !== undefined && localStorage.getItem('password') !== null && localStorage.getItem('password') !== undefined;
-}
-
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
-    //1- Verify if user are loggedin
-    let areUserLoggedIn = verifyIfUserHasLoggedIn();
-    if (!areUserLoggedIn) {
-        window.location = 'login.html';
-        localStorage.setItem('login-error', 'Debe iniciar session para acceder a esta pagina.');
-    }
-
     if (document.getElementById('btnlogout') !== null) {
         document.getElementById('btnlogout').addEventListener('click', function() {
             localStorage.removeItem('email');
