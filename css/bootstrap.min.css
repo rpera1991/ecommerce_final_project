@@ -1,10 +1,11 @@
-/* !
-Bootstrap v4.3.1 (https://getbootstrap.com/)
-Copyright 2011-2019 The Bootstrap Authors
-Copyright 2011-2019 Twitter, Inc.
-Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
 
- :root {
+:root {
     --blue: #007bff;
     --indigo: #6610f2;
     --purple: #6f42c1;
@@ -10340,4 +10341,4 @@ a.text-dark:hover {
 }
 
 
-/* # sourceMappingURL=bootstrap.min.css.map  */
+/*# sourceMappingURL=bootstrap.min.css.map */
