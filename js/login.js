@@ -8,11 +8,16 @@ function getData() {
     let passw = document.getElementById('passw').value;
     return { email: email, password: passw };
 }
+//Save credentials to localStorage
+function saveCredentialsInfo(credentials) {
+    localStorage.setItem('email', credentials.email);
+    localStorage.setItem('password', credentials.password);
+}
 
 //Validate data
 function validateForm(credentials) {
     if (credentials !== undefined || credentials !== null) {
-        if (credentials.email !== '' && credentials.password !== "" && isValidEmail(credentials.email)) {
+        if (credentials.email !== "" && credentials.password !== "" && isValidEmail(credentials.email)) {
             return true;
         }
         return false;
@@ -27,11 +32,7 @@ function isValidEmail(email) {
 
 }
 
-//Save credentials to localStorage
-function saveCredentialsInfo(credentials) {
-    localStorage.setItem('email', credentials.email);
-    localStorage.setItem('password', credentials.password);
-}
+
 
 //Verify if login error has
 function getLoginError() {
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     } else {
         if (document.getElementById('login-error') !== null) {
-            document.getElementById('login-error').innerHTM = "";
+            document.getElementById('login-error').innerHTML = "";
         }
     }
 
