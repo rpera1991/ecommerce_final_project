@@ -51,4 +51,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
             window.location = 'login.html';
         });
     }
+
+    document.getElementById("navid").innerText = `Usuario: ` + localStorage.getItem('email');
 });

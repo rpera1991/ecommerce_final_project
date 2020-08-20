@@ -13,7 +13,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <style>
+    <!-- <style>
         html,
         body {
             height: 100%;
@@ -39,34 +39,35 @@
             margin: auto;
             position: relative;
         }
-    </style>
+    </style> -->
 </head>
 
-<body class="text-center">
+<body class="cuerpoclas text-center">
     <div class="container p-5">
-
-        <form class="formsignin" id="loginform">
-            <img class="mb-4" src="img/login.png" alt="" width="300" height="180">
-            <h1 class="h3 mb-3 font-weight-normal">Bienvenidos</h1>
-            <span class="text-danger" id="login-error"></span>
-            <input type="email" id="e-mail" name="mail" class="form-control mb-2" placeholder="Email" required="" autofocus="">
-            <label for="inputPassword" class="sr-only">
+        <div class="abs-center">
+            <form class="formsignin" id="loginform">
+                <img class="mb-4" src="img/login.png" alt="" width="300" height="180">
+                <h1 class="h3 mb-3 font-weight-normal">Bienvenidos</h1>
+                <span class="text-danger" id="login-error"></span>
+                <input type="email" id="e-mail" name="mail" class="form-control mb-2" placeholder="Email" required="" autofocus="">
+                <label for="inputPassword" class="sr-only">
             </label>
 
-            <input type="password" id="passw" name="pass" class="form-control" placeholder="Password" required="">
-            <div class="checkbox mb-3">
-                <label>
+                <input type="password" id="passw" name="pass" class="form-control" placeholder="Password" required="">
+                <div class="checkbox mb-3">
+                    <label>
                 <input type="checkbox" value="remember-me"> Recuérdame
             </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="button" id="btnlogin">
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="button" id="btnlogin">
               <font style="vertical-align: inherit;">Acceder</font>
               </font>
             </button>
-            <p class="mt-5 mb-3 text-muted">© 2017-2019</font>
-                </font>
-            </p>
-        </form>
+                <p class="mt-5 mb-3 text-muted">© 2017-2019</font>
+                    </font>
+                </p>
+            </form>
+        </div>
     </div>
 
     <script src="js/init.js"></script>
