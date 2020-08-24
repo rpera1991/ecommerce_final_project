@@ -52,5 +52,5 @@ document.addEventListener("DOMContentLoaded", function(e) {
         });
     }
 
-    document.getElementById("navid").innerText = `Usuario: ` + localStorage.getItem('email');
+    document.getElementById("navid").innerHTML = 'Usuario: ' + localStorage.getItem('email');
 });

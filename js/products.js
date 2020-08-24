@@ -1,6 +1,6 @@
-const ORDER_ASC_BY_PRICE = "AZ";
-const ORDER_DESC_BY_PRICE = "ZA";
-const ORDER_BY_PROD_SOLDCOUNT = "Cant.";
+const ORDER_ASC_BY_PRICE = "Min$";
+const ORDER_DESC_BY_PRICE = "Max$";
+const ORDER_BY_PROD_SOLDCOUNT = "Sold";
 var currentProductArray = [];
 var currentsortCriteria = undefined;
 var minPrice = undefined;
@@ -66,6 +66,21 @@ function showProductList(products) {
     }
 }
 
+function searchProducts(value, products) {
+
+    if (value !== undefined && value !== null && value !== '') {
+        let filtered = [];
+        for (let i = 0; i < products.length; i++) {
+            if (products[i].name.toLowerCase().search(value.toLowerCase()) >= 0) {
+                filtered.push(products[i]);
+            }
+        }
+        return filtered;
+    }
+    return [];
+}
+
+
 function sortAndShowProducts(sortCriteria, productArray) {
     currentsortCriteria = sortCriteria;
 
@@ -85,7 +100,10 @@ document.addEventListener("DOMContentLoaded", function() {
         if (resultObj.status === "ok") {
             sortAndShowProducts(ORDER_BY_PROD_SOLDCOUNT, resultObj.data);
         }
+
     });
+
+
 
     document.getElementById("sortAscProd").addEventListener("click", function() {
         sortAndShowProducts(ORDER_ASC_BY_PRICE);
@@ -99,12 +117,14 @@ document.addEventListener("DOMContentLoaded", function() {
         sortAndShowProducts(ORDER_BY_PROD_SOLDCOUNT);
     });
 
-    document.getElementById("clearRangeFilter").addEventListener("click", function() {
-        document.getElementById("rangeFilterCountMin").value = "";
-        document.getElementById("rangeFilterCountMax").value = "";
+    document.getElementById("clearRangeFilterprice").addEventListener("click", function() {
+        document.getElementById("rangeFilterCountMinprice").value = "";
+        document.getElementById("rangeFilterCountMaxprice").value = "";
 
         minPrice = undefined;
         maxPrice = undefined;
+        document.getElementById("rangeFilterCountMinprice").setAttribute("placeholder", "min.");
+        document.getElementById("rangeFilterCountMaxprice").setAttribute("placeholder", "max.");
 
 
         getJSONData(PRODUCTS_URL).then(function(resultObj) {
@@ -114,23 +134,42 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    document.getElementById("rangeFilterCount").addEventListener("click", function() {
-        minPrice = document.getElementById("rangeFilterCountMin").value;
-        maxPrice = document.getElementById("rangeFilterCountMax").value;
+    document.getElementById("rangeFilterCountprice").addEventListener("click", function() {
+        minPrice = document.getElementById("rangeFilterCountMinprice").value;
+        maxPrice = document.getElementById("rangeFilterCountMaxprice").value;
 
         if ((minPrice != undefined) && (minPrice != "") && (parseInt(minPrice)) >= 0) {
             minPrice = parseInt(minPrice);
         } else {
             minPrice = undefined;
+            document.getElementById("rangeFilterCountMinprice").setAttribute("placeholder", "ingrese precio");
+
         }
 
         if ((maxPrice != undefined) && (maxPrice != "") && (parseInt(maxPrice)) >= 0) {
             maxPrice = parseInt(maxPrice);
         } else {
             maxPrice = undefined;
+            document.getElementById("rangeFilterCountMaxprice").setAttribute("placeholder", "ingrese precio");
         }
 
         let filteredProducts = currentProductArray.filter(product => product.cost >= minPrice && product.cost <= maxPrice);
         showProductList(filteredProducts);
+
+    });
+
+    document.getElementById('searchbar').addEventListener('keyup', (e) => {
+
+        let criteria = e.target.value;
+        let filteredProducts = searchProducts(criteria, currentProductArray);
+        if (filteredProducts.length > 0) {
+            showProductList(filteredProducts);
+        } else {
+            getJSONData(PRODUCTS_URL).then(function(resultObj) {
+                if (resultObj.status === "ok") {
+                    sortAndShowProducts(ORDER_BY_PROD_SOLDCOUNT, resultObj.data);
+                }
+            });
+        }
     });
 });

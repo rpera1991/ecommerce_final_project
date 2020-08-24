@@ -9,6 +9,10 @@
     font-weight: bold;
 }
 
+.ancho {
+    width: max-content;
+}
+
 #navid {
     color: white;
 }
