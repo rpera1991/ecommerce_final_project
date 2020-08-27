@@ -92,9 +92,7 @@ function sortAndShowProducts(sortCriteria, productArray) {
     showProductList(currentProductArray);
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+
 document.addEventListener("DOMContentLoaded", function() {
     getJSONData(PRODUCTS_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
@@ -102,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
     });
-
+    //arreglar funcion y poner el texto dentro de la barra
 
 
     document.getElementById("sortAscProd").addEventListener("click", function() {
@@ -152,10 +150,17 @@ document.addEventListener("DOMContentLoaded", function() {
             maxPrice = undefined;
             document.getElementById("rangeFilterCountMaxprice").setAttribute("placeholder", "ingrese precio");
         }
+        if (parseInt(minPrice) > parseInt(maxPrice)) {
+            alert("Minimo no debe ser mayor que Maximo");
+        }
 
         let filteredProducts = currentProductArray.filter(product => product.cost >= minPrice && product.cost <= maxPrice);
-        showProductList(filteredProducts);
 
+        if (filteredProducts.length == 0) {
+            alert("No existe articulo en ese rango de precio");
+        } else {
+            showProductList(filteredProducts)
+        };
     });
 
     document.getElementById('searchbar').addEventListener('keyup', (e) => {
