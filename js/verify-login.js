@@ -7,6 +7,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
     let areUserLoggedIn = verifyIfUserHasLoggedIn();
     if (!areUserLoggedIn) {
         window.location = 'login.html';
-        localStorage.setItem('login-error', 'Debe iniciar session para acceder a esta pagina.');
+        localStorage.setItem('login-error', 'Debe iniciar sesion para acceder a esta pagina.');
     }
 });
