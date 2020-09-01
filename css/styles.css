@@ -5,6 +5,10 @@
     font-family: 'Raleway', serif !important;
 }
 
+.checked {
+    color: orange;
+}
+
 .jumbotron .display-4 {
     font-weight: bold;
 }
