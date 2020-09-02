@@ -10,14 +10,16 @@ function showComents() {
         htmlContentToAppend += `
             <div class="row">
                 <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">` + comment.user + `</h4>
-                        <small class="text-muted">` + comment.score + ` Puntuacion</small>
-                    </div>
-                    <div class="d-flex w-100 justify-content-between">
-                        <p class="mb-1">Fecha: ` + comment.dataTime `</p>
-                    </div>
-                    <p class="mb-1">` + comment.description + `</p>
+                   <div style="margin-bottom: 20px;">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">${ comment.user } </h5>
+                            <small class="text-muted"> ${ comment.score } Puntuacion</small>
+                        </div>
+                        <div class="d-flex w-100 justify-content-between">
+                            <small class="mb-1">Fecha: ${ comment.dateTime } </small>
+                        </div>
+                        <p class="mb-1"> ${ comment.description }</p>
+                   </div>
                 </div>
             </div>        
         `
@@ -26,25 +28,20 @@ function showComents() {
 }
 
 document.addEventListener("DOMContentLoaded", function(e) {
+
+    document.getElementById('btn-show-comments').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (document.getElementById('comments').style.display == 'none') {
+            document.getElementById('comments').style.display = 'block';
+        } else {
+            document.getElementById('comments').style.display = 'none';
+        }
+    })
+
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
+            comments = resultObj.data;
             showComents(comments);
-            // let productNameHTML = document.getElementById("productName");
-            // let productDescriptionHTML = document.getElementById("productDescription");
-            // let relatedProdHTML = document.getElementById("relatedprod");
-            // let productPriceHTML = document.getElementById("productPrice")
-            // let productSoldCountHTML = document.getElementById("productSoldCount");
-            // let productCategHTML = document.getElementById("productCateg");
-
-            // productNameHTML.innerHTML = product.name;
-            // productDescriptionHTML.innerHTML = product.description;
-            // productSoldCountHTML.innerHTML = product.soldCount;
-            // relatedProdHTML.innerHTML = product.relatedProducts;
-            // productCategHTML.innerHTML = product.category;
-            // productPriceHTML.innerHTML = product.cost + ' ' + product.currency;
-
-            //Muestro las imagenes en forma de galería
-            // showImagesGallery(product.images);
         }
     });
 });
