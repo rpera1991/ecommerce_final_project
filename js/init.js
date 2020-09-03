@@ -44,5 +44,13 @@ var getJSONData = function(url) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
+    if (document.getElementById('btnlogout') !== null) {
+        document.getElementById('btnlogout').addEventListener('click', function() {
+            localStorage.removeItem('email');
+            localStorage.removeItem('password');
+            window.location = 'login.html';
+        });
+    }
 
+    document.getElementById("navid").innerHTML = 'Usuario: ' + localStorage.getItem('email');
 });
