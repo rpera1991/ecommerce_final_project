@@ -27,6 +27,7 @@ function showComents() {
     }
 }
 
+
 document.addEventListener("DOMContentLoaded", function(e) {
 
     document.getElementById('btn-show-comments').addEventListener('click', function(e) {
@@ -44,4 +45,15 @@ document.addEventListener("DOMContentLoaded", function(e) {
             showComents(comments);
         }
     });
+    document.getElementById("public").addEventListener('click', function(e) {
+
+        let textComent = document.getElementById("edit-comment").value;
+        let fecha = new Date();
+        let user = localStorage.getItem('email');
+        let obcomment = { score: "3", description: textComent, user: user, dateTime: fecha };
+        comments.push(obcomment);
+        showComents(comments);
+        document.getElementById("edit-comment").value = "";
+    })
+
 });

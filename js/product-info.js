@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
             product = resultObj.data;
-            debugger
+
             let productNameHTML = document.getElementById("productName");
             let productDescriptionHTML = document.getElementById("productDescription");
             let relatedProdHTML = document.getElementById("relatedprod");
