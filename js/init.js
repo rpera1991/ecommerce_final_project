@@ -53,4 +53,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
 
     document.getElementById("navid").innerHTML = 'Usuario: ' + localStorage.getItem('email');
+
+
 });

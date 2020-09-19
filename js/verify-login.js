@@ -3,7 +3,7 @@ function verifyIfUserHasLoggedIn() {
 }
 
 document.addEventListener("DOMContentLoaded", function(e) {
-    //1- Verify if user are loggedin    
+    //1- Verify if user are login    
     let areUserLoggedIn = verifyIfUserHasLoggedIn();
     if (!areUserLoggedIn) {
         window.location = 'login.html';

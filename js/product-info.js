@@ -1,4 +1,5 @@
 var product = {};
+var prodrelatedProduct = {};
 
 function showImagesGallery(array) {
 
@@ -6,31 +7,46 @@ function showImagesGallery(array) {
 
     for (let i = 0; i < array.length; i++) {
         let imageSrc = array[i];
-
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
+        <div class="col-lg-3 col-md-4 col-6 contenedor">
             <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="${imageSrc}" alt="">
+            <a href="${imageSrc}" target="_blank"><img class="img-fluid img-thumbnail imagen" src="${imageSrc}" alt=""></a>
             </div>
         </div>
         `
-
         document.getElementById("productImagGallery").innerHTML = htmlContentToAppend;
     }
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e) {
+function showRelatedProduct(array) {
 
+    let htmlContentToAppend = "";
+
+    for (let i = 1; i < array.length; i = i + 2) {
+        let prodrel = array[i];
+
+        htmlContentToAppend += `
+        <span class="container">
+        <div class="col-lg-3 col-md-4 col-6">
+           <h3 class="mb-1">${prodrel.name}</h3>
+              <div class="d-block mb-4 h-100">
+                 <img class="img-fluid img-thumbnail imagen" src="${prodrel.imgSrc}" alt="${prodrel.description}">
+              </div>
+              <p class="mb-1">${prodrel.description}</p>
+        </div>
+        </span>
+    `
+        document.getElementById("relatedprod").innerHTML = htmlContentToAppend;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function(e) {
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
             product = resultObj.data;
-
             let productNameHTML = document.getElementById("productName");
             let productDescriptionHTML = document.getElementById("productDescription");
-            let relatedProdHTML = document.getElementById("relatedprod");
+
             let productPriceHTML = document.getElementById("productPrice")
             let productSoldCountHTML = document.getElementById("productSoldCount");
             let productCategHTML = document.getElementById("productCateg");
@@ -38,12 +54,20 @@ document.addEventListener("DOMContentLoaded", function(e) {
             productNameHTML.innerHTML = product.name;
             productDescriptionHTML.innerHTML = product.description;
             productSoldCountHTML.innerHTML = product.soldCount;
-            relatedProdHTML.innerHTML = product.relatedProducts;
+
             productCategHTML.innerHTML = product.category;
             productPriceHTML.innerHTML = product.cost + ' ' + product.currency;
 
-            //Muestro las imagenes en forma de galería
             showImagesGallery(product.images);
+
         }
     });
+    getJSONData(PRODUCTS_URL).then(function(resultObj) {
+        if (resultObj.status === "ok") {
+
+            prodrelatedProduct = resultObj.data
+            showRelatedProduct(prodrelatedProduct);
+        }
+    });
+
 });

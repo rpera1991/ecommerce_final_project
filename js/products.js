@@ -24,7 +24,6 @@ function sortProduct(criteria, array) {
         result = array.sort(function(a, b) {
             let aCount = parseInt(a.soldCount);
             let bCount = parseInt(b.soldCount);
-
             if (aCount > bCount) { return -1; }
             if (aCount < bCount) { return 1; }
             return 0;
@@ -49,11 +48,10 @@ function showProductList(products) {
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
                         <h4 class="mb-1">${ product.name }</h4>
-                        <small class="text-muted">${ product.soldCount}artículos</small>
+                        <small class="text-muted">${ product.soldCount} artículos</small>
                     </div>
                     <div class="d-flex w-100 justify-content-between">
                         <p class="mb-1">Precio:${product.cost}<span> ${ product.currency}</span></p>
-                        
                     </div>
                     <p class="mb-1">${ product.description}</p>
                 </div>
@@ -80,29 +78,20 @@ function searchProducts(value, products) {
     return [];
 }
 
-
 function sortAndShowProducts(sortCriteria, productArray) {
     currentsortCriteria = sortCriteria;
-
     if (productArray != undefined) {
         currentProductArray = productArray;
     }
-
     currentProductArray = sortProduct(currentsortCriteria, currentProductArray);
     showProductList(currentProductArray);
 }
-
-
 document.addEventListener("DOMContentLoaded", function() {
     getJSONData(PRODUCTS_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
             sortAndShowProducts(ORDER_BY_PROD_SOLDCOUNT, resultObj.data);
         }
-
     });
-    //arreglar funcion y poner el texto dentro de la barra
-
-
     document.getElementById("sortAscProd").addEventListener("click", function() {
         sortAndShowProducts(ORDER_ASC_BY_PRICE);
     });
@@ -118,20 +107,16 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("clearRangeFilterprice").addEventListener("click", function() {
         document.getElementById("rangeFilterCountMinprice").value = "";
         document.getElementById("rangeFilterCountMaxprice").value = "";
-
         minPrice = undefined;
         maxPrice = undefined;
         document.getElementById("rangeFilterCountMinprice").setAttribute("placeholder", "min.");
         document.getElementById("rangeFilterCountMaxprice").setAttribute("placeholder", "max.");
-
-
         getJSONData(PRODUCTS_URL).then(function(resultObj) {
             if (resultObj.status === "ok") {
                 sortAndShowProducts(ORDER_BY_PROD_SOLDCOUNT, resultObj.data);
             }
         });
     });
-
     document.getElementById("rangeFilterCountprice").addEventListener("click", function() {
         minPrice = document.getElementById("rangeFilterCountMinprice").value;
         maxPrice = document.getElementById("rangeFilterCountMaxprice").value;
@@ -141,9 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             minPrice = undefined;
             document.getElementById("rangeFilterCountMinprice").setAttribute("placeholder", "ingrese precio");
-
         }
-
         if ((maxPrice != undefined) && (maxPrice != "") && (parseInt(maxPrice)) >= 0) {
             maxPrice = parseInt(maxPrice);
         } else {
@@ -162,9 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
             showProductList(filteredProducts)
         };
     });
-
     document.getElementById('searchbar').addEventListener('keyup', (e) => {
-
         let criteria = e.target.value;
         let filteredProducts = searchProducts(criteria, currentProductArray);
         if (filteredProducts.length > 0) {
