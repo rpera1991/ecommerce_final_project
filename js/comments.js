@@ -1,16 +1,14 @@
 var comments = [];
 
 function showComents() {
-
     let htmlContentToAppend = "";
-
     for (let i = 0; i < comments.length; i++) {
         let comment = comments[i];
 
         htmlContentToAppend += `
             <div class="row">
                 <div class="col">
-                   <div style="margin-bottom: 20px;">
+                    <div style="margin-bottom: 20px;">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">${ comment.user } </h5>
                             <small class="text-muted"> ${ comment.score } Puntuacion</small>
@@ -19,15 +17,13 @@ function showComents() {
                             <small class="mb-1">Fecha: ${ comment.dateTime } </small>
                         </div>
                         <p class="mb-1"> ${ comment.description }</p>
-                   </div>
+                    </div>
                 </div>
             </div>        
         `
         document.getElementById("comments").innerHTML = htmlContentToAppend;
     }
 }
-
-
 document.addEventListener("DOMContentLoaded", function(e) {
 
     document.getElementById('btn-show-comments').addEventListener('click', function(e) {
