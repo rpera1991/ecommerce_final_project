@@ -51,28 +51,73 @@
             </div>
         </div>
     </nav>
-    <div class="container p-5">
-        <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-            <h4 class="alert-heading">¡A trabajar! :)</h4>
-            <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-            <hr>
-            <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+    <div class="container mt-5">
+        <div class="text-center p-4">
+            <h2>Carrito de Compras</h2>
+            <p class="lead">Encontrarás aquí toda la información de los Articulos que desea comprar.</p>
         </div>
-    </div>
-    <div id="spinner-wrapper">
-        <div class="lds-ring">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+
+        <div id="containercart">
+
         </div>
-    </div>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/dropzone.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/verify-login.js"></script>
+        <br>
+        <p class="mb-1">Total a Pagar en Pesos Uruguayos: <span id="subT"></span></p>
+        <p>El costo total de su compra con el envio se mostrara en el siguiente paso.</p>
+
+        <button class="btn btn-success" data-toggle="modal" data-target="#MyModal">Proceder a la Compra</button>
+        <div class="modal align-middle" id="MyModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ya casi es tuyo</h4>
+                        <button class="close" data-dismiss="modal">&times;</button><br>
+                    </div>
+                    <h5 class="modal-body"> Complete los siguientes campos para terminar su compra</h5>
+                    <div class="container p-3">
+                        <form class="formsignin" id="modform">
+                            <input type="text" name="Direccion" class="form-control mb-2" placeholder="Direccion de Residencia" required autofocus="">
+                            <input type="text" name="Pais" class="form-control mb-2" placeholder="Pais de Residencia" required autofocus="">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Seleccione Tipo de Envio</label>
+                                <select class="form-control" id="FormControlSelect">
+                                    <option>Seleccione uno de nuestros planes de envio</option>
+                                    <option value="op1">Premium (2-5 días) - Costo del 15% sobre el subtotal.</option>
+                                    <option value="op2">Express (5-8 días) - Costo del 7% sobre el subtotal.</option>
+                                    <option value="op3">Standard (12 a 15 días) - Costo del 5% sobre el subtotal.</option>
+                                </select>
+                            </div>
+                            <label for="exampleFormControlSelect1">Ingrese Metodo De Pago</label>
+                            <input type="text" name="Nombre" class="form-control mb-2" placeholder="Nombres y Apellidos" required autofocus="">
+                            <input type="number" name="TC" class="form-control mb-2" placeholder="Numero de Tarjeta" min="0" max="16" required="" autofocus="">
+                            <input type="number" name="cvv" class="form-control mb-2" col="2" placeholder="cvv" required max="3" autofocus="">
+                            <input type="month" name="fecha" class="form-control mb-2" placeholder="Fecha de Vencimiento" autofocus="" required>
+                            <div id="totalmodal" class="modal-body">El monto total de su pedido es de: <span id="modalTotal"></span></div>
+                            <div class="modal-footer">
+                                <button id="payid" type="submit" class="btn btn-info" data-dismiss="modal">Pagar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container p-5">
+        </div>
+        <div id="spinner-wrapper">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/dropzone.js"></script>
+        <script src="js/init.js"></script>
+        <script src="js/cart.js"></script>
+        <script src="js/verify-login.js"></script>
 </body>
 
 </html>

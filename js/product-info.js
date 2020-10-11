@@ -62,6 +62,7 @@ function showRelatedProduct(array) {
         let prodrel = array[i];
 
         htmlContentToAppend += `
+        <a href="product-info.html" class="list-group-item-action">
         <span class="container">
         <div class="col-lg-3 col-md-4 col-6">
            <h3 class="mb-1">${prodrel.name}</h3>
@@ -71,6 +72,7 @@ function showRelatedProduct(array) {
               <p class="mb-1">${prodrel.description}</p>
         </div>
         </span>
+        </a>
     `
         document.getElementById("relatedprod").innerHTML = htmlContentToAppend;
     }
