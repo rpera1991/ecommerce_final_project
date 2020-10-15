@@ -75,26 +75,26 @@
                     </div>
                     <h5 class="modal-body"> Complete los siguientes campos para terminar su compra</h5>
                     <div class="container p-3">
-                        <form class="formsignin" id="modform">
-                            <input type="text" name="Direccion" class="form-control mb-2" placeholder="Direccion de Residencia" required autofocus="">
-                            <input type="text" name="Pais" class="form-control mb-2" placeholder="Pais de Residencia" required autofocus="">
+                        <form action="" class="form-group" id="modform" name="formmodal" onsubmit="return validate()">
+                            <input type="text" id="direction" name="Direccion" class="form-control mb-2" placeholder="Direccion de Residencia" required autofocus="">
+                            <input type="text" id="pais" name="Pais" class="form-control mb-2" placeholder="Pais de Residencia" required autofocus="">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Seleccione Tipo de Envio</label>
-                                <select class="form-control" id="FormControlSelect">
-                                    <option>Seleccione uno de nuestros planes de envio</option>
+                                <select class="form-control" name="Select" id="FormControlSelect">
+                                    <option value="op0">Seleccione uno de nuestros planes de envio</option>
                                     <option value="op1">Premium (2-5 días) - Costo del 15% sobre el subtotal.</option>
                                     <option value="op2">Express (5-8 días) - Costo del 7% sobre el subtotal.</option>
                                     <option value="op3">Standard (12 a 15 días) - Costo del 5% sobre el subtotal.</option>
                                 </select>
                             </div>
                             <label for="exampleFormControlSelect1">Ingrese Metodo De Pago</label>
-                            <input type="text" name="Nombre" class="form-control mb-2" placeholder="Nombres y Apellidos" required autofocus="">
-                            <input type="number" name="TC" class="form-control mb-2" placeholder="Numero de Tarjeta" min="0" max="16" required="" autofocus="">
-                            <input type="number" name="cvv" class="form-control mb-2" col="2" placeholder="cvv" required max="3" autofocus="">
-                            <input type="month" name="fecha" class="form-control mb-2" placeholder="Fecha de Vencimiento" autofocus="" required>
+                            <input type="text" id="nameform" name="Nombre" class="form-control mb-2" placeholder="Nombres y Apellidos" required autofocus="">
+                            <input type="number" id="tc" name="TC" class="form-control mb-2" placeholder="Numero de Tarjeta" min="0" max="16" required autofocus="">
+                            <input type="number" id="cvv" name="cvv" class="form-control mb-2" col="2" placeholder="cvv" required max="3" autofocus="">
+                            <input type="month" id="date" name="fecha" class="form-control mb-2" placeholder="Fecha de Vencimiento" autofocus="" required>
                             <div id="totalmodal" class="modal-body">El monto total de su pedido es de: <span id="modalTotal"></span></div>
                             <div class="modal-footer">
-                                <button id="payid" type="submit" class="btn btn-info" data-dismiss="modal">Pagar</button>
+                                <button id="payid" type="button" class="btn btn-info">Pagar</button>
                             </div>
                         </form>
                     </div>

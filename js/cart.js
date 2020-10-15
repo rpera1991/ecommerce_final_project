@@ -18,7 +18,6 @@ function showCartItems() {
                         <a href="product-info.html" class="list-item-action"><h4 class="mb-1">${element.name}</h4></a>
                             <div>
                             <p class="mb-1">Precio: ${element.currency} ${element.unitCost}</p>
-                            
                             <p class="mb-1">Unidades: <span class="quantity">${element.count}</span></p>
                             <button type="button" class="btn btn-primary btn-minus" data-quantity="${element.count}" data-price="${element.unitCost}" data-id=${i}>-</button>
                             <button type="button" class="btn btn-primary btn-plus" data-quantity="${element.count}" data-price="${element.unitCost}" data-id="${i}">+</button>
@@ -78,7 +77,6 @@ function addListenerOnSelectEnviosChange() {
     let total = 0;
     document.getElementById('FormControlSelect').addEventListener('change', function(e) {
         const value = e.target.value;
-        debugger;
         switch (value) {
             case 'op1':
                 total = (parseFloat(getTotal()) * 0.15).toFixed(2);
@@ -94,6 +92,34 @@ function addListenerOnSelectEnviosChange() {
     });
 }
 
+function validate() {
+    document.getElementById('formmodal')
+    if (document.formmodal.Direccion.value == "") {
+        document.getElementById("direction").focus();
+        return false;
+    }
+    if (document.formmodal.Pais.value == "") {
+        document.getElementById("pais").focus();
+        return false;
+    }
+    if (document.formmodal.Nombre.value == "") {
+        document.getElementById("nameform").focus();
+        return false;
+    }
+    if (document.formmodal.TC.value == "") {
+        document.getElementById("tc").focus();
+        return false;
+    }
+    if (document.formmodal.cvv.value == "") {
+        document.getElementById("cvv").focus();
+        return false;
+    }
+    if (document.formmodal.Select.value == "op0") {
+        document.getElementById("FormControlSelect").focus();
+        return false
+    }
+    return true;
+}
 
 function getTotal() {
     let total = 0;
@@ -122,11 +148,14 @@ document.addEventListener("DOMContentLoaded", function(e) {
             addListenerOnSelectEnviosChange();
             getTotal();
         }
-    });
-    document.getElementById("payid").addEventListener('click', function() {
+        document.getElementById("payid").addEventListener('click', function() {
 
-        alert("Se ha realizado su compra con Exito");
-        window.location = "index.html"
 
+
+            if (validate() == true) {
+                alert("Se ha realizado su compra con Exito");
+                window.location = "index.html"
+            }
+        });
     });
 });
