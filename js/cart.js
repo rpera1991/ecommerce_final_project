@@ -1,5 +1,6 @@
 var carrito = {};
 var cartArray = [];
+const trashButtons = document.getElementsByClassName('btn-trash');
 
 function showCartItems() {
     let htmlCartToAppend = "";
@@ -8,7 +9,7 @@ function showCartItems() {
 
         htmlCartToAppend += `
         <div>
-            <div class="list-group-item list-group-item-action">
+            <div class="list-group-item list-group-item-action" id="cart-item-${i}">
                 <div class="row" id="product-${i}">
                     <div class="col-3">
                         <img src="${element.src}" alt="${element.name}" class="img-thumbnail">
@@ -21,6 +22,8 @@ function showCartItems() {
                             <p class="mb-1">Unidades: <span class="quantity">${element.count}</span></p>
                             <button type="button" class="btn btn-primary btn-minus" data-quantity="${element.count}" data-price="${element.unitCost}" data-id=${i}>-</button>
                             <button type="button" class="btn btn-primary btn-plus" data-quantity="${element.count}" data-price="${element.unitCost}" data-id="${i}">+</button>
+                            <button type="button" class="btn btn-primary btn-trash" data-quantity="${element.count}" data-price="${element.unitCost}" data-id=${i}><i class="far fa-trash-alt"></i></button>
+                            
                             </div>
                         </div>
                         <p class="mb-1">${element.name}</p>
@@ -37,6 +40,7 @@ function showCartItems() {
 function addEventListenersToActionsQuantityButtons() {
     const decreaseButtons = document.getElementsByClassName('btn-minus');
     const increaseButtons = document.getElementsByClassName('btn-plus');
+
 
     for (let i = 0; i < decreaseButtons.length; i++) {
         decreaseButtons[i].addEventListener('click', function(e) {
@@ -106,7 +110,7 @@ function validate() {
         document.getElementById("nameform").focus();
         return false;
     }
-    if (document.formmodal.TC.value == "") {
+    if (document.formmodal.Tarcred.value == "") {
         document.getElementById("tc").focus();
         return false;
     }
@@ -118,6 +122,7 @@ function validate() {
         document.getElementById("FormControlSelect").focus();
         return false
     }
+
     return true;
 }
 
@@ -135,7 +140,22 @@ function getTotal() {
     total = parseFloat(total).toFixed(2);
     document.getElementById('subT').innerHTML = total;
     document.getElementById('modalTotal').innerHTML = total;
+    if (total == 0) {
+        document.getElementById("btmodal").setAttribute("disabled", "disabled")
+
+    }
     return total;
+}
+
+function deleteItem() {
+    for (let i = 0; i < trashButtons.length; i++) {
+        trashButtons[i].addEventListener('click', function(e) {
+            let id = e.target.parentNode.dataset.id;
+            document.getElementById(`cart-item-${id}`).remove();
+            getTotal();
+
+        })
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function(e) {
@@ -147,15 +167,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
             addEventListenersToActionsQuantityButtons();
             addListenerOnSelectEnviosChange();
             getTotal();
+            deleteItem();
+
         }
         document.getElementById("payid").addEventListener('click', function() {
-
-
 
             if (validate() == true) {
                 alert("Se ha realizado su compra con Exito");
                 window.location = "index.html"
             }
         });
+        if (cartArray == -1) {
+            document.getElementById("btmodal").setAttribute("disabled")
+        }
     });
 });
