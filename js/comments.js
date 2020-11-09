@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         let obcomment = { score: "3", description: textComent, user: user, dateTime: fecha };
         comments.push(obcomment);
         showComents(comments);
-        document.getElementById("edit-comment").value = "";
+        // document.getElementById("edit-comment").value = "";
     })
 
 });

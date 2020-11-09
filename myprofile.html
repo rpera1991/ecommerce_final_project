@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>eMercado - Todo lo que busques está aquí</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/dropzone.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="profile" href="css/profile.css">
+</head>
+
+<body>
+    <nav class="site-header sticky-top py-1 bg-dark">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
+            <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+            <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+            <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+            <div class="dropdown">
+                <button id="navid" class="py-2 d-none d-md-inline-block btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="cart.html">Mi carrito</a>
+                    <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+                    <a class="dropdown-item" id="btnlogout" href="#">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="text-center p-4">
+            <h2>Carrito de Compras</h2>
+            <p class="lead">Encontrarás aquí toda la información de los Articulos que desea comprar.</p>
+        </div>
+
+
+
+        <div class="container">
+            <div class="view-account">
+                <section class="module">
+                    <div class="module-inner">
+                        <!-- <div class="side-bar">
+                            <div class="user-info">
+                                <img class="img-profile img-circle img-responsive center-block" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                                <ul class="meta list list-unstyled">
+                                    <li class="name">Rebecca Sanders
+                                        <label class="label label-info">UX Designer</label>
+                                    </li>
+                                    <li class="email"><a href="#">Rebecca.S@website.com</a></li>
+                                    <li class="activity">Last logged in: Today at 2:18pm</li>
+                                </ul>
+                            </div>
+                            <nav class="side-menu">
+                                <ul class="nav">
+                                    <li class="active"><a href="#"><span class="fa fa-user"></span> Profile</a></li>
+                                    <li><a href="#"><span class="fa fa-cog"></span> Settings</a></li>
+                                    <li><a href="#"><span class="fa fa-credit-card"></span> Billing</a></li>
+                                    <li><a href="#"><span class="fa fa-envelope"></span> Messages</a></li>
+
+                                    <li><a href="user-drive.html"><span class="fa fa-th"></span> Drive</a></li>
+                                    <li><a href="#"><span class="fa fa-clock-o"></span> Reminders</a></li>
+                                </ul>
+                            </nav>
+                        </div> -->
+                        <div class="content-panel">
+                            <!-- <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2> -->
+                            <form class="form-horizontal">
+                                <fieldset class="fieldset">
+                                    <h3 class="fieldset-title">Informacion Personal</h3>
+                                    <!-- poner un icono -->
+                                    <div class="form-group avatar">
+                                        <figure class="figure col-md-2 col-sm-3 col-xs-12">
+                                            <img class="img-rounded img-responsive img-thumbnail" src="img/avatar.png" alt="">
+                                        </figure>
+                                        <div class="form-inline col-md-10 col-sm-9 col-xs-12">
+                                            <input type="file" class="file-uploader pull-left">
+                                            <button type="submit" id="change" class="btn btn-sm btn-default-alt pull-left">Cambiar Imagen</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Usuario</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="text" id="username" class="form-control" value="Usuario">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Nombres</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="text" id="nombreuser" class="form-control" value="Nombre">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 col-sm-3 col-xs-12 control-label">Apellidos</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="text" id="apellidosuser" class="form-control" value="Apellidos">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="fieldset">
+                                    <h3 class="fieldset-title">Informacion de Contacto</h3>
+                                    <div class="form-group">
+                                        <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="email" id="emailuser" class="form-control" value="asd@email.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2  col-sm-3 col-xs-12 control-label">Telefono</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="number" class="form-control" id="celluser" placeholder="+598 90000000">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2  col-sm-3 col-xs-12 control-label">Direccion</label>
+                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                            <input type="text" id="adressuser" class="form-control" placeholder="Casa 657">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <hr>
+                                <div class="form-group">
+                                    <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                        <input class="btn btn-primary" id="butperfil" type="button" value="Actualizar Perfil">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <hr>
+                <form class="form" action="##" id="registrationForm">
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="first_name"><h4>Primer Nombre</h4></label>
+                            <input type="text" class="form-control" name="nombre" id="nombre1" placeholder="Ingresa tu primer nombre aqui." title="Ingresa tu primer nombre aqui.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="last_name"><h4>Apellido</h4></label>
+                            <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingresa tu segundo nombre aqui." title="Ingresa tu segundo nombre aqui.">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="phone"><h4>Telefono de Contacto</h4></label>
+                            <input type="text" class="form-control" name="telefono" value="" id="telefono" placeholder="Ingresa tu numero aqui." title="Ingresa tu numero aqui.">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="mobile"><h4>Fecha de Nacimiento</h4></label>
+                            <input type="text" class="form-control" name="fecha" id="fecha" placeholder="Ingresa tu fecha de nacimiento aqui." title="Ingresa tu fecha de nacimiento aqui.">
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-xs-6">
+                            <label for="email"><h4>Email</h4></label>
+                            <input type="email" class="form-control" name="email" id="email1" placeholder="Ingresa tu correo electronico aqui." title="Ingresa tu correo electronico aqui.">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <br>
+                            <button class="btn btn-lg btn-success" type="button" id="btnguardar1"><i class="glyphicon glyphicon-ok-sign"></i>Guardar</button>
+                            <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat" id="btnreiniciar"></i>Reiniciar</button>
+                        </div>
+                    </div>
+                </form>
+
+                <hr>
+
+                </form>
+            </div>
+
+        </div>
+       
+    </div>
+   
+
+    </div>-->
+
+    </div>
+
+
+    <div class="container p-5">
+    </div>
+    <div id="spinner-wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/myprofile.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/verify-login.js"></script>
+</body>
+
+</html>

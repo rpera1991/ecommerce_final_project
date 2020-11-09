@@ -23,6 +23,15 @@ input[type="radio"] {
     display: none;
 }
 
+
+/* input:invalid {
+    border: 2px dashed red;
+}
+
+input:valid {
+    border: 2px solid rgba(rgb(50, 145, 209), green, blue, alpha);
+} */
+
 input[type="radio"]:checked~label {
     color: orange;
 }
