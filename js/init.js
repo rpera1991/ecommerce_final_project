@@ -52,8 +52,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
             window.location = 'login.html';
         });
     }
-
-    document.getElementById("navid").innerHTML = 'Usuario: ' + localStorage.getItem('email');
+    if (localStorage.getItem('usuario') == undefined || localStorage.getItem('usuario') == "") {
+        document.getElementById("navid").innerHTML = 'Usuario: ' + localStorage.getItem('email');
+    } else {
+        document.getElementById("navid").innerHTML = 'Usuario: ' + localStorage.getItem('usuario');
+    }
 
 
 });
