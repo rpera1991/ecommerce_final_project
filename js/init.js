@@ -41,21 +41,23 @@ var getJSONData = function(url) {
         });
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
     if (document.getElementById('btnlogout') !== null) {
         document.getElementById('btnlogout').addEventListener('click', function() {
             localStorage.removeItem('email');
             localStorage.removeItem('password');
+            localStorage.removeItem('profile');
             window.location = 'login.html';
         });
     }
-    if (localStorage.getItem('usuario') == undefined || localStorage.getItem('usuario') == "") {
+    if (localStorage.getItem('profile') == undefined || localStorage.getItem('profile') == null) {
         document.getElementById("navid").innerHTML = 'Usuario: ' + localStorage.getItem('email');
     } else {
-        document.getElementById("navid").innerHTML = 'Usuario: ' + localStorage.getItem('usuario');
+        let profiledata = localStorage.getItem('profile');
+        if (profiledata) {
+            profiledata = JSON.parse(profiledata)
+            document.getElementById("navid").innerHTML = 'Usuario: ' + profiledata.usuario;
+        }
     }
 
 

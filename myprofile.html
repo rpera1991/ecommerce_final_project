@@ -48,14 +48,15 @@
                         <div class="content-panel">
                             <form class="form-horizontal">
                                 <fieldset class="fieldset">
-                                    <h3 class="fieldset-title"><i class="far fa-address-book"></i> Informacion Personal</h3>
+                                    <h3 class="fieldset-title"><i class="far fa-address-book"></i> Informacion Personal
+                                    </h3>
                                     <!-- poner un icono -->
                                     <div class="form-group avatar">
                                         <figure class="figure col-md-2 col-sm-3 col-xs-12">
-                                            <img class="img-rounded img-responsive img-thumbnail" src="img/avatar.png" alt="">
+                                            <img id="imgprofile" class="img-rounded img-responsive img-thumbnail" src="" alt="">
                                         </figure>
                                         <div class="form-inline col-md-10 col-sm-9 col-xs-12">
-                                            <input type="file" id="selectfile" class="file-uploader pull-left">
+                                            <input type="file" id="selectfile" class="file-uploader pull-left" onchange="onFileSelected()">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -95,14 +96,15 @@
                                     <div class="form-group">
                                         <label class="col-md-2  col-sm-3 col-xs-12 control-label">Edad</label>
                                         <div class="col-md-10 col-sm-9 col-xs-12">
-                                            <input type="number" id="adressuser" class="form-control" placeholder="Edad" required>
+                                            <input type="number" id="edad" class="form-control" placeholder="Edad" required>
                                         </div>
                                     </div>
                                 </fieldset>
 
                                 <div class="form-group">
                                     <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                                        <button class="btn btn-primary" id="butperfil" type="button">Actualizar Perfil</button>
+                                        <button class="btn btn-primary" id="butperfil" type="button">Actualizar
+                                            Perfil</button>
                                     </div>
                                 </div>
                             </form>
@@ -129,7 +131,6 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/dropzone.js"></script>
     <script src="js/init.js"></script>
-
     <script src="js/verify-login.js"></script>
 </body>
 

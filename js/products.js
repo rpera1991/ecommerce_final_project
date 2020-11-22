@@ -62,7 +62,6 @@ function showProductList(products) {
         </div>    
         <div class="w-100"></div>
         </a>
-        
         `
     }
     if (htmlContentToAppend !== "") {
